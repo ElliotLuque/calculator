@@ -4,10 +4,7 @@ import net.ausiasmarch.calculator.entity.Calculation;
 import net.ausiasmarch.calculator.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculator")
@@ -20,23 +17,23 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
-    @GetMapping("/add/{operator1}/{operator2}")
-    public ResponseEntity<Calculation> add(@PathVariable double operator1, @PathVariable double operator2) {
-        return calculatorService.add(operator1, operator2);
+    @PostMapping("/add")
+    public ResponseEntity<Calculation> add(@RequestBody Calculation calculation) {
+        return calculatorService.add(calculation);
     }
 
-    @GetMapping("/minus/{operator1}/{operator2}")
-    public ResponseEntity<Calculation> subtract(@PathVariable double operator1, @PathVariable double operator2) {
-        return calculatorService.subtract(operator1, operator2);
+    @PostMapping("/minus")
+    public ResponseEntity<Calculation> subtract(@RequestBody Calculation calculation) {
+        return calculatorService.subtract(calculation);
     }
 
-    @GetMapping("/multiply/{operator1}/{operator2}")
-    public ResponseEntity<Calculation> multiply(@PathVariable double operator1, @PathVariable double operator2) {
-        return calculatorService.multiply(operator1, operator2);
+    @PostMapping("/multiply")
+    public ResponseEntity<Calculation> multiply(@RequestBody Calculation calculation) {
+        return calculatorService.multiply(calculation);
     }
 
-    @GetMapping("/div/{operator1}/{operator2}")
-    public ResponseEntity<Calculation> divide(@PathVariable double operator1, @PathVariable double operator2) {
-        return calculatorService.divide(operator1, operator2);
+    @PostMapping("/div")
+    public ResponseEntity<Calculation> divide(@RequestBody Calculation calculation) {
+        return calculatorService.divide(calculation);
     }
 }

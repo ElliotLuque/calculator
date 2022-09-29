@@ -8,27 +8,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculatorService {
 
-    public ResponseEntity<Calculation> add(double operator1, double operator2) {
-        Calculation calc = new Calculation(operator1, operator2);
-        calc.setResult(calc.getOperator1() + calc.getOperator2());
-        return new ResponseEntity<>(calc, HttpStatus.OK);
+    public ResponseEntity<Calculation> add(Calculation calculation) {
+        calculation.setResult(calculation.getOperator1() + calculation.getOperator2());
+        return new ResponseEntity<>(calculation, HttpStatus.OK);
     }
 
-    public ResponseEntity<Calculation> subtract(double operator1, double operator2) {
-        Calculation calc = new Calculation(operator1, operator2);
-        calc.setResult(calc.getOperator1() - calc.getOperator2());
-        return new ResponseEntity<>(calc, HttpStatus.OK);
+    public ResponseEntity<Calculation> subtract(Calculation calculation) {
+        calculation.setResult(calculation.getOperator1() - calculation.getOperator2());
+        return new ResponseEntity<>(calculation, HttpStatus.OK);
     }
 
-    public ResponseEntity<Calculation> multiply(double operator1, double operator2) {
-        Calculation calc = new Calculation(operator1, operator2);
-        calc.setResult(calc.getOperator1() * calc.getOperator2());
-        return new ResponseEntity<>(calc, HttpStatus.OK);
+    public ResponseEntity<Calculation> multiply(Calculation calculation) {
+        calculation.setResult(calculation.getOperator1() * calculation.getOperator2());
+        return new ResponseEntity<>(calculation, HttpStatus.OK);
     }
 
-    public ResponseEntity<Calculation> divide(double operator1, double operator2) {
-        Calculation calc = new Calculation(operator1, operator2);
-        calc.setResult(calc.getOperator1() / calc.getOperator2());
-        return new ResponseEntity<>(calc, HttpStatus.OK);
+    public ResponseEntity<Calculation> divide(Calculation calculation) {
+        calculation.setResult(calculation.getOperator1() / calculation.getOperator2());
+        return new ResponseEntity<>(calculation, HttpStatus.OK);
     }
 }
